@@ -1,25 +1,35 @@
 {
-  "name": "nlw-connect-nodejs",
-  "module": "index.ts",
-  "type": "module",
-  "scripts": {
-    "dev": "tsx watch --env-file=.env.local src/server.ts"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@types/bun": "latest",
-    "@types/node": "^22.13.4",
-    "tsx": "^4.19.2"
-  },
-  "peerDependencies": {
-    "typescript": "^5.7.3"
-  },
-  "dependencies": {
-    "@fastify/cors": "^10.0.2",
-    "@fastify/swagger": "^9.4.2",
-    "@fastify/swagger-ui": "^5.2.2",
-    "fastify": "^5.2.1",
-    "fastify-type-provider-zod": "^4.0.2",
-    "zod": "^3.24.2"
-  }
+	"name": "nlw-connect-nodejs",
+	"module": "index.ts",
+	"type": "module",
+	"scripts": {
+		"dev": "tsx watch --env-file=.env src/server.ts",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "drizzle-kit migrate",
+		"db:studio": "drizzle-kit studio",
+		"biome:check": "biome check",
+		"biome:fix": "biome check --fix",
+		"biome:format": "biome format"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/bun": "latest",
+		"@types/node": "^22.13.4",
+		"drizzle-kit": "^0.30.4",
+		"tsx": "^4.19.2"
+	},
+	"peerDependencies": {
+		"typescript": "^5.7.3"
+	},
+	"dependencies": {
+		"@fastify/cors": "^10.0.2",
+		"@fastify/swagger": "^9.4.2",
+		"@fastify/swagger-ui": "^5.2.2",
+		"drizzle-orm": "^0.39.3",
+		"fastify": "^5.2.1",
+		"fastify-type-provider-zod": "^4.0.2",
+		"ioredis": "^5.5.0",
+		"postgres": "^3.4.5",
+		"zod": "^3.24.2"
+	}
 }

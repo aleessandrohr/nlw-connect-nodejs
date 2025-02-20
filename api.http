@@ -5,3 +5,11 @@ Content-Type: application/json
   "name": "John Doe",
   "email": "john.doe@example.com"
 }
+
+###
+GET http://localhost:3333/invites/aleessandrohr
+
+###
+GET http://localhost:3333/invites/aleessandrohr/referrals/access-count
+
+###
