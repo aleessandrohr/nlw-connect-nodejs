@@ -16,9 +16,7 @@ export const accessInviteLinkRoute: FastifyPluginAsyncZod = async app => {
           subscriberId: z.string(),
         }),
         response: {
-          201: z.object({
-            subscriberId: z.string(),
-          }),
+          302: z.null(),
         },
       },
     },
@@ -32,34 +30,6 @@ export const accessInviteLinkRoute: FastifyPluginAsyncZod = async app => {
       redirectUrl.searchParams.set('referral', subscriberId)
 
       return reply.redirect(redirectUrl.toString(), 302)
-    }
-  )
-}
-
-export const getReferralAccessCountRoute: FastifyPluginAsyncZod = async app => {
-  app.get(
-    '/invites/:subscriberId/referrals/access-count',
-    {
-      schema: {
-        summary: 'Acessar contagem de acessos do link de convite.',
-        description: 'Acessar contagem de acessos do link de convite.',
-        tags: ['referral'],
-        params: z.object({
-          subscriberId: z.string(),
-        }),
-        response: {
-          201: z.object({
-            accessCount: z.string().nullable(),
-          }),
-        },
-      },
-    },
-    async (request, reply) => {
-      const { subscriberId } = request.params
-
-      const accessCount = await redis.hget('referral:access-count', subscriberId)
-
-      return reply.status(200).send({ accessCount })
     }
   )
 }

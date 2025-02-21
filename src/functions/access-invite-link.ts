@@ -1,12 +1,11 @@
-import { subscriptions } from "@/drizzle/schema/subscriptions"
-
-import { db } from "@/drizzle/client"
-import { redis } from "@/redis/cient"
+import { redis } from '@/redis/cient'
 
 interface SubscribeToEventParams {
   subscriberId: string
 }
 
-export const accessInviteLink = async ({ subscriberId }: SubscribeToEventParams) => {
+export const accessInviteLink = async ({
+  subscriberId,
+}: SubscribeToEventParams) => {
   await redis.hincrby('referral:access-count', subscriberId, 1)
 }
