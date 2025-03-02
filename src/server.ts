@@ -48,6 +48,6 @@ app.register(getSubscriberInvitesCountRoute)
 app.register(getSubscriberRankingPositionRoute)
 app.register(getRankingRoute)
 
-app.listen({ port: env.PORT, host: '0.0.0.0' }, () => {
+app.listen({ port: env.PORT, host: env.HOST }, () => {
   console.log(`HTTP server running on port ${env.PORT}!`)
 })
