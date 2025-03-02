@@ -4,7 +4,10 @@ import { redis } from '@/redis/cient'
 import { inArray } from 'drizzle-orm'
 
 export const getRanking = async () => {
-  const ranking = await redis.zrevrange('referral:ranking', 0, 2, 'WITHSCORES')
+  const ranking = (await redis.zrange('referral:ranking', 0, 2, {
+    withScores: true,
+    rev: true,
+  })) as Array<string>
 
   const subscriberIdAndScore: Record<string, number> = {}
 
