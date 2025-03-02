@@ -5,6 +5,7 @@ const envSchema = z.object({
   HOST: z.string().default('0.0.0.0'),
   POSTGRES_URL: z.string().url(),
   REDIS_URL: z.string().url(),
+  REDIS_TOKEN: z.string(),
   WEB_URL: z.string().url(),
 })
 
@@ -13,5 +14,6 @@ export const env = envSchema.parse({
   HOST: process.env.HOST,
   POSTGRES_URL: process.env.POSTGRES_URL,
   REDIS_URL: process.env.REDIS_URL,
+  REDIS_TOKEN: process.env.REDIS_TOKEN,
   WEB_URL: process.env.WEB_URL,
 })
